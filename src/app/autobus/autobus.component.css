@@ -1,0 +1,10 @@
+pre {
+  color: red;
+}
+li {
+  transition: all .3s;
+}
+li:hover {
+  text-shadow: 0 0 3px white;
+  cursor: pointer;
+}

@@ -1,0 +1,32 @@
+<p>Aizņemtās vietas: <code>{{aiznemtasVietas}}</code></p>
+<p>Kopējā ietilpība: <code>{{kopejaIetilpiba}}</code></p>
+
+<div class="alert alert-warning" *ngIf="brivasVietas===0">Sorry, autobuss ir pilns</div>
+<div class="alert alert-info" *ngIf="brivasVietas>0">Autobusā ir {{brivasVietas}} vietas</div>
+
+<button class="btn-primary btn" [disabled]="nevarIekapt()" (click)="iekapa()">Iekāpa</button>
+<button class="btn-primary btn" [disabled]="nevarIzkapt()" (click)="izkapa()">Izkāpa</button>
+
+<hr>
+Pietura
+<div class="text-danger" *ngIf="edgarsIrAtnacis">Edgars ir Atnacis!!!</div>
+
+<p>Pieturas ietilpiba <code>{{pieturasIetilpiba}}</code></p>
+<p>Pieturā ir <code>{{peopleInPietura.length}}</code> cilvēku: </p>
+<ul>
+  <li *ngFor="let person of peopleInPietura">
+    <app-person-name
+      (atnacaDavis)="edgarsIrAtnacis=false"
+      (iekapaEdgars)="edgarsIrAtnacis=true"
+      name="{{person.name}}" surname="{{person.surname}}"></app-person-name>
+    <button>iekāpa</button>
+    <button>aizgāja</button>
+  </li>
+</ul>
+
+// Level up: [(ngModel)]
+// Superboostlevelup: ReactiveForms
+
+<input class="form-control" (keyup.enter)="pienacaCilveks($event)">
+
+
