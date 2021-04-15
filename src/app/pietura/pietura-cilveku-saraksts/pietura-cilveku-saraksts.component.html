@@ -1,0 +1,11 @@
+<ul>
+  <li *ngFor="let person of peopleInPietura; let i = index">
+    {{person.name}} {{person.surname}}
+    <!--    <app-person-name-->
+    <!--      (atnacaDavis)="edgarsIrAtnacis=false"-->
+    <!--      (iekapaEdgars)="edgarsIrAtnacis=true"-->
+    <!--      name="{{person.name}}" surname="{{person.surname}}"></app-person-name>-->
+        <button (click)="cilveksGribIekapt.emit(person)">iekāpa</button>
+    <button (click)="cilveksGribIetProm.emit(person)">aizgāja</button>
+  </li>
+</ul>

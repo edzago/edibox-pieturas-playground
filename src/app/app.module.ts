@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { PersonComponent } from './person/person.component';
 import { PersonNameComponent } from './person-name/person-name.component';
 import { AutobusComponent } from './autobus/autobus.component';
+import { PieturaModule } from './pietura/pietura.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { AutobusComponent } from './autobus/autobus.component';
     AutobusComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    PieturaModule
   ],
   providers: [],
   bootstrap: [AppComponent]
