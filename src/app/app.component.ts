@@ -14,14 +14,5 @@ export interface Person {
 })
 export class AppComponent {
 
-  people: Person[] = [
-    {name: 'Olga', jobPosition: 'Full Stack Developer', surname: 'A'},
-    {name: 'Janis', address: 'Bay Area, San Francisco, CA', surname: 'B'},
-  ];
 
-  title = 'edibox';
-
-  jaieliekCilveksAutobusa(person: Person): void {
-    alert('NJu, dabu tagad mani autobusā');
-  }
 }
