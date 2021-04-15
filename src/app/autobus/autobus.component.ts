@@ -12,7 +12,8 @@ export class AutobusComponent implements OnInit {
   kopejaIetilpiba = 16;
   pieturasIetilpiba = 7;
 
-  peopleInPietura: Person[] = [];
+  peopleInAutobusa: Person[] = [];
+  peopleInPietura: Person[] = [{name: 'Ernests'}, {name: 'Rolands'}];
   edgarsIrAtnacis = false;
 
   constructor() {
@@ -34,7 +35,7 @@ export class AutobusComponent implements OnInit {
   }
 
   nevarIzkapt(): boolean | null {
-    return this.aiznemtasVietas === 0;
+    return this.peopleInPietura.length >= this.pieturasIetilpiba || this.aiznemtasVietas === 0;
   }
 
   nevarIekapt(): boolean | null {
@@ -42,11 +43,35 @@ export class AutobusComponent implements OnInit {
   }
 
   pienacaCilveks(keyboardEvent: any): void {
-    this.peopleInPietura.push({name: keyboardEvent.target.value});
-    console.log(this.peopleInPietura);
+    if (this.peopleInPietura.length < this.pieturasIetilpiba) {
+      this.peopleInPietura.push({name: keyboardEvent.target.value});
+      keyboardEvent.target.value = '';
+    }
   }
 
   sayMyName(person: Person): void {
     alert(`Your name is ${person.name}`);
+  }
+
+  iekapaCilveks(personKasGribIekapt: Person): void {
+    this.iekapa();
+    this.peopleInAutobusa.push(personKasGribIekapt);
+    this.peopleInPietura = this.peopleInPietura.filter(
+      personaPietura => personaPietura !== personKasGribIekapt
+    );
+  }
+
+  aizgajaProm(personaKasGribAiziet: Person): void {
+    this.peopleInPietura = this.peopleInPietura.filter(
+      personaPietura => personaPietura !== personaKasGribAiziet
+    );
+  }
+
+  izkapaCilveks(personKasGribIzkapt: Person): void {
+    this.izkapa();
+    this.peopleInPietura.push(personKasGribIzkapt);
+    this.peopleInAutobusa = this.peopleInAutobusa.filter(
+      personaPietura => personaPietura !== personKasGribIzkapt
+    );
   }
 }
