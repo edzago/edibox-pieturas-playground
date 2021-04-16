@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Person } from '../app.component';
 
 @Component({
@@ -6,14 +6,20 @@ import { Person } from '../app.component';
   templateUrl: './autobus.component.html',
   styleUrls: ['./autobus.component.css']
 })
-export class AutobusComponent implements OnInit {
+export class AutobusComponent implements OnInit, OnChanges {
   brivasVietas = 0;
-  aiznemtasVietas = 0;
+  @Input() jaunsPasazieris: Person = null;
+  @Output() cilveksGribIzkaptNoAutobusa = new EventEmitter<Person>();
+
+  get aiznemtasVietas(): number {
+    return this.kopejaIetilpiba - this.brivasVietas;
+  }
+
   kopejaIetilpiba = 16;
 
-
-  peopleInAutobusa: Person[] = [];
-
+  peopleInAutobusa: Person[] = [
+    {name: 'Edgars'}
+  ];
 
   edgarsIrAtnacis = false;
 
@@ -25,19 +31,18 @@ export class AutobusComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.jaunsPasazieris && changes.jaunsPasazieris.currentValue) {
+      this.peopleInAutobusa.push(changes.jaunsPasazieris.currentValue);
+    }
+  }
+
   iekapa(): void {
-    this.aiznemtasVietas++;
     this.brivasVietas--;
   }
 
   izkapa(): void {
-    this.aiznemtasVietas--;
     this.brivasVietas++;
-  }
-
-  nevarIzkapt(): boolean | null {
-    return true;
-    // return this.peopleInPietura.length >= this.pieturasIetilpiba || this.aiznemtasVietas === 0;
   }
 
   nevarIekapt(): boolean | null {
@@ -49,8 +54,6 @@ export class AutobusComponent implements OnInit {
     alert(`Your name is ${person.name}`);
   }
 
-
-
   iekapaCilveks(personKasGribIekapt: Person): void {
     this.iekapa();
     this.peopleInAutobusa.push(personKasGribIekapt);
@@ -58,7 +61,6 @@ export class AutobusComponent implements OnInit {
     //   personaPietura => personaPietura !== personKasGribIekapt
     // );
   }
-
 
   izkapaCilveks(personKasGribIzkapt: Person): void {
     this.izkapa();

@@ -1,8 +1,7 @@
 <h2>Pietura</h2>
 <app-pietura-statistika [pieturasIetilpiba]="pieturasIetilpiba" [peopleInPietura]="peopleInPietura.length"></app-pietura-statistika>
 <app-pietura-cilveku-saraksts
-  (cilveksGribIekapt)="cilveksGribIekaptAutobusa.emit($event)"
+  (cilveksGribIekapt)="gribIekapt($event)"
   (cilveksGribIetProm)="aizgajaProm($event)"
   [peopleInPietura]="peopleInPietura"></app-pietura-cilveku-saraksts>
-<input class="form-control" (keyup.enter)="pienacaCilveks($event)">
-<!--<div class="text-danger" *ngIf="edgarsIrAtnacis">Edgars ir Atnacis!!!</div>-->
+<input class="form-control" (keyup.enter)="pienacaCilveks($event)" *ngIf="!(pieturaPilna|async)">

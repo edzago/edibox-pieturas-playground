@@ -1,7 +1,9 @@
-<h2>Dashboard</h2>
+<app-autobus class="d-block bg-white text-dark p-3 rounded"
+             [jaunsPasazieris]="cilveksDurvis"
+             (cilveksGribIzkaptNoAutobusa)="jaieliekCilveksPietura($event)"
+></app-autobus>
 
-<app-autobus></app-autobus>
-
-<app-pietura
-  [peopleInPietura]="people"
-  (cilveksGribIekaptAutobusa)="jaieliekCilveksAutobusa($event)"></app-pietura>
+<app-pietura class="d-block bg-white text-dark p-3 rounded"
+             (pieturaPilna)="pieturaIrPilna = $event"
+             (cilveksGribIekaptAutobusa)="jaieliekCilveksAutobusa($event)"></app-pietura>
+{{pieturaIrPilna|json}}

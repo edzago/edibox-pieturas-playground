@@ -7,16 +7,21 @@ import { Person } from '../app.component';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  people: Person[] = [
-    {name: 'Olga', jobPosition: 'Full Stack Developer', surname: 'A'},
-    {name: 'Janis', address: 'Bay Area, San Francisco, CA', surname: 'B'},
-  ];
 
+  cilveksDurvis: Person = null;
+  nevarIzkaptJoPieturaPilna = false;
+  pieturaIrPilna = false;
 
   jaieliekCilveksAutobusa(person: Person): void {
-    alert('NJu, dabu tagad mani autobusā');
+    this.cilveksDurvis = person;
   }
-  constructor() { }
+
+  jaieliekCilveksPietura(person: Person): void {
+    this.cilveksDurvis = person;
+  }
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

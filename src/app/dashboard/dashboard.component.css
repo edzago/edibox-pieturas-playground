@@ -1,0 +1,10 @@
+:host {
+  display: flex;
+  background: white url(https://images.squarespace-cdn.com/content/53dd6676e4b0fedfbc26ea91/1471540645539-NNOCSZFZH30RCB4S7URE/1024px-Southern_Vectis_311_HW54_BUO_and_Ryde_Tesco_bus_stop.JPG?content-type=image%2Fjpeg) no-repeat 0 0;
+  background-size: cover;
+  align-items: center;
+  justify-content: space-around;
+  /*width: 800px;*/
+  /*height: 600px;*/
+  flex: 1 1 auto;
+}

@@ -4,12 +4,9 @@
 <div class="alert alert-warning" *ngIf="brivasVietas===0">Sorry, autobuss ir pilns</div>
 <div class="alert alert-info" *ngIf="brivasVietas>0">Autobusā ir {{brivasVietas}} vietas</div>
 <ul>
-  <li *ngFor="let person of peopleInAutobusa">
-    <app-person-name
-      (atnacaDavis)="edgarsIrAtnacis=false"
-      (iekapaEdgars)="edgarsIrAtnacis=true"
-      name="{{person.name}}" surname="{{person.surname}}"></app-person-name>
-    <button [disabled]="nevarIzkapt()" (click)="izkapaCilveks(person)">izkāpa</button>
+  <li *ngFor="let person of peopleInAutobusa" class="d-flex">
+    <app-person-name name="{{person.name}}" surname="{{person.surname}}"></app-person-name>
+    <button (click)="izkapaCilveks(person)">izkāpa</button>
   </li>
 </ul>
 
