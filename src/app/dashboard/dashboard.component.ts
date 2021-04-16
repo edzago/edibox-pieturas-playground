@@ -8,16 +8,16 @@ import { Person } from '../app.component';
 })
 export class DashboardComponent implements OnInit {
 
-  cilveksDurvis: Person = null;
+  cilvkeasKasVelasiekaptTranportLidzekli: Person = null;
   nevarIzkaptJoPieturaPilna = false;
   pieturaIrPilna = false;
 
   jaieliekCilveksAutobusa(person: Person): void {
-    this.cilveksDurvis = person;
+    this.cilvkeasKasVelasiekaptTranportLidzekli = person;
   }
 
   jaieliekCilveksPietura(person: Person): void {
-    this.cilveksDurvis = person;
+    this.cilvkeasKasVelasiekaptTranportLidzekli = person;
   }
 
   constructor() {

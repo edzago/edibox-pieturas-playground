@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Person } from '../app.component';
 
 @Component({
@@ -6,7 +6,7 @@ import { Person } from '../app.component';
   templateUrl: './autobus.component.html',
   styleUrls: ['./autobus.component.css']
 })
-export class AutobusComponent implements OnInit, OnChanges {
+export class AutobusComponent implements OnInit, OnChanges, AfterViewInit {
   brivasVietas = 0;
   @Input() jaunsPasazieris: Person = null;
   @Output() cilveksGribIzkaptNoAutobusa = new EventEmitter<Person>();
@@ -24,14 +24,22 @@ export class AutobusComponent implements OnInit, OnChanges {
   edgarsIrAtnacis = false;
 
   constructor() {
+    console.log('😋 Autobusa JS construtor');
+
     this.brivasVietas = this.kopejaIetilpiba;
     // this.pieturasCilvekuSkaits = this.pieturasIetilpiba;
   }
 
   ngOnInit(): void {
+    console.log('😋 Autobuss ir inicializēts angular komponents ar templatie');
+  }
+
+  ngAfterViewInit(): void {
+    console.log('😋 Autobuss ir katavs zīmēt angular komponents ar templatie');
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    console.log('😋 Autobusam kaut kas notiek ar inputu', changes.jaunsPasazieris.currentValue)
     if (changes.jaunsPasazieris && changes.jaunsPasazieris.currentValue) {
       this.peopleInAutobusa.push(changes.jaunsPasazieris.currentValue);
     }

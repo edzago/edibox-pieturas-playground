@@ -1,9 +1,8 @@
 <app-autobus class="d-block bg-white text-dark p-3 rounded"
-             [jaunsPasazieris]="cilveksDurvis"
+             [jaunsPasazieris]="cilvkeasKasVelasiekaptTranportLidzekli"
              (cilveksGribIzkaptNoAutobusa)="jaieliekCilveksPietura($event)"
 ></app-autobus>
 
 <app-pietura class="d-block bg-white text-dark p-3 rounded"
              (pieturaPilna)="pieturaIrPilna = $event"
              (cilveksGribIekaptAutobusa)="jaieliekCilveksAutobusa($event)"></app-pietura>
-{{pieturaIrPilna|json}}
